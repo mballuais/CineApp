@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, FlatList, TextInput, ScrollView } from 'react-native';
 import { useState } from 'react';
 import { DATA } from '../../constants/data';
-import { useFavorites } from '../../hooks/useFavorites';
+import { useFavorites } from '../../hooks/FavoritesContext';
 import MovieCard from '../../components/MovieCard';
 import FilterButton from '../../components/FilterButton';
 import EmptyState from '../../components/EmptyState';

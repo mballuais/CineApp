@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, ScrollView, Pressable, Image } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { DATA } from '../../constants/data';
-import { useFavorites } from '../../hooks/useFavorites';
+import { useFavorites } from '../../hooks/FavoritesContext';
 import Badge from '../../components/Badge';
 import AppButton from '../../components/AppButton';
 
