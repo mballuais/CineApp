@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, FlatList, TextInput, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, FlatList, TextInput } from 'react-native';
 import { useState } from 'react';
 import { DATA } from '../../constants/data';
 import { useFavorites } from '../../hooks/FavoritesContext';
@@ -13,7 +13,7 @@ export default function CatalogueScreen() {
   const [search, setSearch] = useState('');
   const [activeType, setActiveType] = useState('Tous');
   const [activeGenre, setActiveGenre] = useState('Tous');
-  const { favorites, toggleFavorite, isFavorite } = useFavorites();
+  const { toggleFavorite, isFavorite } = useFavorites();
 
   const filtered = DATA.filter(item => {
     const q = search.toLowerCase();
@@ -46,7 +46,7 @@ export default function CatalogueScreen() {
         onChangeText={setSearch}
       />
 
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.filterRow}>
+      <View style={styles.filterRow}>
         {TYPES.map(type => (
           <FilterButton
             key={type}
@@ -55,9 +55,9 @@ export default function CatalogueScreen() {
             onPress={() => setActiveType(type)}
           />
         ))}
-      </ScrollView>
+      </View>
 
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.filterRow}>
+      <View style={styles.filterRow}>
         {GENRES.map(genre => (
           <FilterButton
             key={genre}
@@ -66,7 +66,7 @@ export default function CatalogueScreen() {
             onPress={() => setActiveGenre(genre)}
           />
         ))}
-      </ScrollView>
+      </View>
 
       <Text style={styles.resultsCount}>
         {filtered.length} résultat{filtered.length !== 1 ? 's' : ''}
@@ -114,6 +114,8 @@ const styles = StyleSheet.create({
   },
   filterRow: {
     flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
     marginBottom: 10,
   },
   resultsCount: {
